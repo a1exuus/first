@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# Счётчик на React с использованием useState
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React-компонент счётчика с функциями увеличения и уменьшения значения. Проект демонстрирует работу с хуком `useState` для управления состоянием в функциональных компонентах.
 
-## Available Scripts
+## Цель проекта
 
-In the project directory, you can run:
+Познакомиться с хуком `useState` и изучить основы управления состоянием в React-компонентах.
 
-### `npm start`
+## Описание проекта
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Простой интерактивный счётчик, который позволяет:
+- Отображать текущее значение счёта
+- Увеличивать значение нажатием кнопки «Плюс»
+- Уменьшать значение нажатием кнопки «Минус»
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Структура проекта
 
-### `npm test`
+### Основные файлы
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Counter.jsx** — основной компонент React с логикой счётчика
+- **Counter.css** — файл стилей для компонента
 
-### `npm run build`
+### Описание кода
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Counter.jsx
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Компонент использует хук `useState` для создания состояния:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+const [count, setCount] = useState(0);
+```
 
-### `npm run eject`
+Где:
+* **`count`** — текущее значение счётчика (начальное значение: `0`)
+* **`setCount`** — функция для обновления состояния
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Элементы компонента:
+* `h2` — заголовок «Счётчик»
+* `h1` — отображает текущее значение `count`
+* `button.minus` — кнопка для уменьшения значения (`setCount(count - 1)`)
+* `button.plus` — кнопка для увеличения значения (`setCount(count + 1)`)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Как запустить проект
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Установите зависимости:
+   ```bash
+   npm install
+   ```
+2. Запустите проект в режиме разработки:
+   ```bash
+   npm start
+   ```
+3. Откройте браузер по адресу: http://localhost:3000
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Как проверить работу
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Откройте консоль разработчика в браузере (`F12`).
+* В консоли должно отобразиться начальное значение `count` (`0`).
+* Нажмите кнопку «Плюс» — значение должно увеличиться на 1.
+* Нажмите кнопку «Минус» — значение должно уменьшиться на 1.
+* При каждом изменении состояния компонент автоматически перерисовывается.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Как редактировать
 
-### Analyzing the Bundle Size
+### Изменение начального значения
+В файле `Counter.jsx` измените параметр в `useState`:
+```javascript
+const [count, setCount] = useState(0); // Замените 0 на нужное число
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Изменение шага счётчика
+Добавьте параметр `step`:
+```javascript
+const step = 1;
+setCount(count + step);
+```
 
-### Making a Progressive Web App
+### Добавление стилей
+Отредактируйте файл `Counter.css`:
+```css
+.counter {
+  text-align: center;
+  margin-top: 50px;
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+button {
+  font-size: 18px;
+  margin: 5px;
+  padding: 10px 20px;
+}
+```
 
-### Advanced Configuration
+### Добавление новых функций
+Вы можете добавить:
+* Кнопку сброса: `setCount(0)`
+* Поле ввода для установки произвольного значения
+* Ограничения (минимальное и максимальное значения)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Технологии
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* **React** — библиотека для создания пользовательского интерфейса
+* **useState** — хук для управления состоянием компонента
+* **JSX** — синтаксис для описания UI
+* **CSS** — стилизация компонента
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Что такое useState?
+
+**`useState`** — это хук React, который позволяет добавлять состояние в функциональные компоненты. Он возвращает массив из двух элементов:
+1. Текущее состояние
+2. Функцию для его обновления
+
+---
+
+## Цель обучения
+
+Код написан в образовательных целях для изучения:
+* Основ работы с хуками в React
+* Управления состоянием компонента
+* Обработки событий пользователя
+* Динамического обновления интерфейса
